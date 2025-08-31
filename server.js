@@ -3,6 +3,7 @@ import dotenv from "dotenv"
 import {errorHandler} from "./middlewares/errorHandler.middleware.js"
 import {asyncHandler} from "./middlewares/asyncHandler.middleware.js"
 import {userRouter} from "./routers/users.router.js"
+import cookieParser from "cookie-parser"
 
 dotenv.config();
 
@@ -10,6 +11,7 @@ const app = express();
 const PORT = process.env.PORT || 8000;
 
 app.use(express.json())
+app.use(cookieParser())
 
 app.get("/health" , (req , resp)=>{
     console.log("Something hit the health ");
