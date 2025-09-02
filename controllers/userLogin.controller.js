@@ -1,6 +1,6 @@
 import { getUserByEmail } from "../models/users.model.js";
 import bcrypt from "bcryptjs";
-import { createCookie } from "../services.js/cookie.service.js";
+import { createCookie } from "../services/cookie.service.js";
 
 export const userLogin = async(req , resp , next)=>{
     const {email , password} = req.body;

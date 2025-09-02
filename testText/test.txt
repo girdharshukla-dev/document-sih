@@ -1,0 +1,17 @@
+Kochi Metro Rail – Maintenance Update
+1. Task: Check and replace faulty LED lights in Aluva station platform 2.
+   Assigned to: Electrical team, User ID 5
+   Status: pending
+   Due date: 2025-09-05T18:00:00Z
+   Source Text ID: 101
+2. Task: Update procurement records for new AC units for trains 301-305.
+   Assigned to: Procurement team, User ID 3
+   Status: pending
+   Due date: 2025-09-12T12:00:00Z
+   Source Text ID: 101
+3. Task: Conduct quarterly safety briefing for station staff.
+   Assigned to: HR team, User ID 7
+   Status: pending
+   Due date: 2025-09-10T09:00:00Z
+   Source Text ID: 101
+4. Note: Upcoming track maintenance on 2025-09-15, no immediate action required.
