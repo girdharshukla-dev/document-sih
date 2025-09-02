@@ -6,7 +6,7 @@ Rules:
 2. Each task object must have these fields:
    - "title": short string (max 255 characters) summarizing the task.
    - "description": detailed string describing the task.
-   - "assigned_to": integer representing a user ID (assume the frontend will validate it exists in DB).
+   - "assigned_to": username of the employee to whom the task has to be assigned
    - "status": one of ["pending", "in_progress", "completed"]. Default to "pending" if unsure.
    - "due_date": string in ISO 8601 format (YYYY-MM-DDTHH:MM:SSZ). Use null if not specified.
    - "text_id": integer representing the source text ID (assume it exists in DB).

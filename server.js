@@ -1,9 +1,10 @@
 import express from "express"
 import dotenv from "dotenv"
-import {errorHandler} from "./middlewares/errorHandler.middleware.js"
-import {asyncHandler} from "./middlewares/asyncHandler.middleware.js"
-import {userRouter} from "./routers/users.router.js"
+import { errorHandler } from "./middlewares/errorHandler.middleware.js"
+import { asyncHandler } from "./middlewares/asyncHandler.middleware.js"
+import { userRouter } from "./routers/users.router.js"
 import cookieParser from "cookie-parser"
+import { taskRouter } from "./routers/text.router.js"
 
 dotenv.config();
 
@@ -23,6 +24,7 @@ app.get("/check" , asyncHandler((req,resp)=>{
 }))
 
 app.use("/user" , userRouter);
+app.use("/task" , taskRouter);
 
 app.use(errorHandler)
 

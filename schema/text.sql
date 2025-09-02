@@ -1,4 +1,4 @@
-CREATE TABLE text_data(
+CREATE TABLE text_data (
     id SERIAL PRIMARY KEY,
     text TEXT NOT NULL
-)
+);

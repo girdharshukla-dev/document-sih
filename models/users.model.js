@@ -32,3 +32,11 @@ export async function getAllUsers() {
   );
   return result.rows;
 }
+
+export async function getUserByUsername(username) {
+  const result = await pool.query(
+    `SELECT id FROM users WHERE LOWER(username) = LOWER($1)`,
+    [username]
+  );
+  return result.rows[0]?.id;
+}

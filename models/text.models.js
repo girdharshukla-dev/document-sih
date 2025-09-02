@@ -6,7 +6,7 @@ import {pool} from "../dbConnection.js";
  */
 export async function insertText(text){
     const result = await pool.query(
-        `INSERT INTO full_text(text) VALUES($1)`,[text]
+        `INSERT INTO text_data(text) VALUES($1) RETURNING id`,[text]
     );
-    return result.rowCount;
+    return result.rows[0].id;
 }

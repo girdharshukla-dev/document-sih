@@ -2,6 +2,7 @@ import { GoogleGenAI } from "@google/genai";
 import { prompt } from "./prompt.js"
 import { readFile } from "fs/promises"
 import "dotenv/config"
+import { getAllUsers } from "../models/users.model.js"
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 if (!GEMINI_API_KEY) {
@@ -10,28 +11,27 @@ if (!GEMINI_API_KEY) {
 
 const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
-async function main() {
-    let text;
-    try{
-        text = await readFile("./testText/test.txt" , "utf8");
-    }catch(err){
-        console.log("Error in reading file");
-        return;
-    }
-
+/**
+ * 
+ * @param {string} text 
+ * @returns {Array<Object>}
+ */
+export async function generateTasks(text) {
+    // console.log("REACHED IN GENERATE TASKS")
+    const users = getAllUsers();
     const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
         contents: `${prompt} : ${text}`,
-    });
+    }); 
     let tasks;
-    try{
+    try {
         // console.log(response.text);
         let cleaned = response.text.replace(/^```json\s*/, '').replace(/\s*```$/, '');
         tasks = JSON.parse(cleaned);
-    }catch(err){
+    } catch (err) {
         console.log("Error in parsing gemini response");
     }
+    // console.log("COMPLETED TASK CREATION")
     console.log(tasks);
+    return tasks;
 }
-
-await main();

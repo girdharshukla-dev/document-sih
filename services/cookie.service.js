@@ -9,7 +9,7 @@ export async function createCookie(user_id){
     const uuid = v4();
     const ans = await insertCookie(uuid , user_id);
     if(!ans){
-        const err = new Error("Error in insertnig cookies");
+        const err = new Error("Error in inserting cookies");
         err.status = 500;
         throw err;
     }
