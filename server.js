@@ -5,11 +5,17 @@ import { asyncHandler } from "./middlewares/asyncHandler.middleware.js"
 import { userRouter } from "./routers/users.router.js"
 import cookieParser from "cookie-parser"
 import { taskRouter } from "./routers/text.router.js"
+import cors from "cors"
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+app.use(cors({
+    origin : "http://localhost:5173",
+    credentials : true
+}))
 
 app.use(express.json())
 app.use(cookieParser())

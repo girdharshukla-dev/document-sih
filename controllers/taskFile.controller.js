@@ -4,6 +4,7 @@ import { insertText } from "../models/text.models.js";
 import { getUserByUsername } from "../models/users.model.js";
 
 export async function taskFile(req, resp, next) {
+
     if (!req.file) {
         const err = new Error("No file found");
         err.status = 404;
@@ -11,8 +12,7 @@ export async function taskFile(req, resp, next) {
     }
 
     const text = req.file.buffer.toString("utf8");
-    // console.log(text);
-
+    console.log(text);
 
     if(!text){
         throw new Error("No text parsed");
