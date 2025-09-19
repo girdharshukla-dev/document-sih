@@ -1,6 +1,7 @@
 import { taskFile } from "../controllers/taskFile.controller.js";
 import multer from "multer";
 import express from "express";
+import { getAllTasks } from "../controllers/tasks.controller.js";
 
 export const taskRouter = express.Router();
 
@@ -11,4 +12,5 @@ const upload = multer({
     }
 })
 
-taskRouter.post("/upload" , upload.single("file") , taskFile)
+taskRouter.post("/upload", upload.single("file"), taskFile)
+taskRouter.get("/all", getAllTasks)
