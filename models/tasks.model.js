@@ -16,6 +16,27 @@ export async function insertTask(text_id, assigned_to, title, description, due_d
     return result.rowCount;
 }
 
+export async function getTaskFromDbByEmail(email){
+    const result = await pool.query(
+        `SELECT 
+            t.id,
+            t.text_id,
+            t.assigned_to,
+            u.username AS assigned_to_name,
+            t.title,
+            t.description,
+            t.status,
+            t.due_date,
+            t.created_at,
+            t.updated_at
+        FROM tasks t
+        JOIN users u ON t.assigned_to = u.id WHERE u.email=$1;`,
+        [email]
+    )
+    return result.rows;
+}
+
+
 export async function getAllTasksFromDb() {
     const result = await pool.query(
         `SELECT 
@@ -32,6 +53,6 @@ export async function getAllTasksFromDb() {
         FROM tasks t
         JOIN users u ON t.assigned_to = u.id;`
     );
-    console.log(result.rows);
+    // console.log(result.rows);
     return result.rows;
 }
